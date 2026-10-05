@@ -49,6 +49,10 @@
           搜索
           <input id="searchInput" type="search" placeholder="片段编号或备注" />
         </label>
+        <label>
+          每盘容量(秒)
+          <input id="capacityInput" type="number" min="1" step="1" />
+        </label>
         <button id="exportBtn">导出清单</button>
       </section>
 
@@ -99,15 +103,43 @@
         <section class="panel list-panel">
           <div class="panel-head">
             <h2>放映顺序</h2>
-            <span>拖拽片段调整顺序</span>
+            <span>拖拽片段调整顺序，按盘分组</span>
           </div>
           <div id="segmentList" class="segment-list"></div>
         </section>
 
-        <aside class="panel warning-panel">
-          <h2>试映前核对</h2>
-          <div id="warningList" class="warning-list"></div>
-        </aside>
+        <div class="right-col">
+          <aside class="panel reconcile-panel">
+            <h2>核对台</h2>
+            <p class="panel-hint">贴进放映机导出的实际记录，逐条对账。编号写法不同会认成同一条。</p>
+            <textarea id="actualInput" rows="6" placeholder="每行一条实际记录，例如：
+A-014
+A006
+A-012"></textarea>
+            <div class="recon-foot">
+              <span id="reconCounts" class="recon-counts">尚未对账</span>
+              <button id="clearActualBtn" type="button">清空</button>
+            </div>
+            <div class="recon-group">
+              <h3>计划有 · 实际没放 <span id="missingCount" class="recon-tag missing">0</span></h3>
+              <ul id="reconMissing" class="recon-list"></ul>
+            </div>
+            <div class="recon-group">
+              <h3>实际有 · 计划没有 <span id="pendingCount" class="recon-tag pending">0</span></h3>
+              <ul id="reconPending" class="recon-list"></ul>
+            </div>
+          </aside>
+
+          <section class="panel disk-plan-panel">
+            <h2>装盘方案</h2>
+            <div id="diskPlan" class="disk-plan"></div>
+          </section>
+
+          <aside class="panel warning-panel">
+            <h2>试映前核对</h2>
+            <div id="warningList" class="warning-list"></div>
+          </aside>
+        </div>
       </section>
     </main>
 
