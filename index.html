@@ -52,6 +52,23 @@
         <button id="exportBtn">导出清单</button>
       </section>
 
+      <section class="panel reconcile-panel">
+        <div class="panel-head">
+          <h2>实际放映记录对账</h2>
+          <span>粘贴放映机导出的记录，逐条核对；编号自动归一（A-001 / A001 / a 001 视为同一条）</span>
+        </div>
+        <div class="reconcile-body">
+          <textarea
+            id="actualInput"
+            rows="7"
+            placeholder="每行一条，编号必填，时长可选，例如：&#10;A001 18秒&#10;a-006 9&#10;A 012｜14秒&#10;A-021 22（计划里没有的会先挂待确认）"
+          ></textarea>
+          <div id="reconcileResult" class="reconcile-result">
+            <p class="empty">还没有粘贴实际记录。粘贴后会自动逐条对账。</p>
+          </div>
+        </div>
+      </section>
+
       <section class="layout">
         <aside class="panel">
           <h2>录入片段</h2>
@@ -99,15 +116,25 @@
         <section class="panel list-panel">
           <div class="panel-head">
             <h2>放映顺序</h2>
-            <span>拖拽片段调整顺序</span>
+            <span>拖拽片段调整顺序，改时长会自动重算装盘</span>
           </div>
           <div id="segmentList" class="segment-list"></div>
         </section>
 
-        <aside class="panel warning-panel">
-          <h2>试映前核对</h2>
-          <div id="warningList" class="warning-list"></div>
-        </aside>
+        <div class="side-col">
+          <section class="panel reel-panel">
+            <div class="panel-head">
+              <h2>装盘方案</h2>
+              <span>每本固定容量 <strong id="reelCapacityLabel">60 秒</strong></span>
+            </div>
+            <div id="reelList" class="reel-list"></div>
+          </section>
+
+          <aside class="panel warning-panel">
+            <h2>试映前核对</h2>
+            <div id="warningList" class="warning-list"></div>
+          </aside>
+        </div>
       </section>
     </main>
 
